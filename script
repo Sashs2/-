@@ -1,0 +1,19 @@
+#!/bin/bash
+
+	available=0
+	while gestops "f" opt
+	do
+		case $opt in
+		f)
+			available=1
+		;;
+		esac
+	done
+
+	for i in{141,110,158,112}
+	do
+	ip="10.7.180.$i"
+	ping -c 1 $ip >> /dev/null
+	answ=$?
+	if[[available -eq answ ]] ; then echo $ip ; fi
+	done
